@@ -1,0 +1,11 @@
+{
+  "name": "media-react",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "sideEffects": false,
+  "scripts": { "typecheck": "tsc -p ." },
+  "dependencies": { "media-core": "workspace:*" },
+  "peerDependencies": { "react": ">=18" }
+}

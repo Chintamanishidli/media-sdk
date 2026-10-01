@@ -1,0 +1,11 @@
+export { createMediaClient } from "./client";
+export type { MediaClient, MediaClientConfig } from "./client";
+export type { Provider, ProviderListParams } from "./provider";
+export { createPexelsProvider } from "./pexels-provider";
+export type { PexelsProviderConfig } from "./pexels-provider";
+export { createMockProvider } from "./mock-provider";
+export type { MockProviderOptions } from "./mock-provider";
+export { MediaError } from "./errors";
+export type { MediaErrorCode } from "./errors";
+export type { MediaEvents, Unsubscribe } from "./emitter";
+export type { MediaItem, MediaType, Page, ListParams, SearchParams } from "./types";

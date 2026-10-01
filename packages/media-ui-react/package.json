@@ -1,0 +1,10 @@
+{
+  "name": "media-ui-react",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "sideEffects": false,
+  "scripts": { "typecheck": "tsc -p ." },
+  "peerDependencies": { "react": ">=18" }
+}
