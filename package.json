@@ -6,7 +6,7 @@
     "dev": "pnpm --filter app dev",
     "build": "pnpm --filter app build",
     "check:boundaries": "node scripts/check-boundaries.mjs",
-    "typecheck": "tsc -p packages/media-core && tsc -p packages/media-react && tsc -p packages/media-ui-react && pnpm --filter app typecheck",
+    "typecheck": "tsc -p packages/media-core && tsc -p packages/media-react && tsc -p packages/media-ui-react && tsc -p packages/media-native && tsc -p packages/media-ui-native && pnpm --filter app typecheck",
     "test": "node --import tsx --test packages/media-core/test/*.test.ts",
     "verify": "pnpm check:boundaries && pnpm typecheck && pnpm test"
   },

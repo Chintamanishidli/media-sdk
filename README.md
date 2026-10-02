@@ -8,9 +8,9 @@ Take-home for FotoOwl. Pexels is the data source.
 packages/
   media-core/      pure TS: Pexels client, cache + de-dupe, event emitter (no React/DOM)
   media-react/     provider + hooks, imports ONLY media-core
-  media-native/    (TODO) same contract for React Native, imports ONLY media-core
+  media-native/    same contract as media-react for React Native, imports ONLY media-core
   media-ui-react/  headless useGrid / useLightbox / useReelSwiper, imports NOTHING from this repo
-  media-ui-native/ (TODO) same for React Native
+  media-ui-native/ headless useGrid / useLightbox / useReelSwiper for React Native (FlatList, Modal), imports NOTHING from this repo
 apps/
   app/             Vite + React; the only package that imports media-react AND media-ui-react
 ```
@@ -50,4 +50,10 @@ To use Pexels, copy `apps/app/.env.example` to `apps/app/.env.local` and set `VI
 
 ## Cuts and why
 
-- _fill in as you go (e.g. native Lightbox video, e2e tests, key proxy)_
+- **Native packages are type-checked but not run on a device or simulator.** There is no native app in the brief, so I did not build one. The hooks follow RN idioms (FlatList `onEndReached`, `Modal` + `onRequestClose`, `PanResponder` swipe, FlatList paging + viewability for reels) but are untested at runtime.
+- **Hook logic is duplicated between `media-react` and `media-native`.** Wrappers may not import each other and the brief has no shared package, so I accepted a small copy rather than add a layer. A shared `media-hooks-shared` package would remove it.
+- **Lightbox video** is not implemented (images only). Videos open in the Reels view instead.
+- **No component/e2e tests.** Unit tests cover core only (cache de-dupe, events, errors, mock provider); UI behaviour was checked by hand.
+- **No API-key proxy.** There is no backend, so a Pexels key would ship to the browser. Fine for a take-home, not for production.
+- **Mock provider by default** because Pexels key issuance was paused when I started; swapping in a real provider is one adapter file.
+- **Grid arrow keys** follow DOM order, not visual columns (CSS-columns layout makes column-aware navigation unreliable).
